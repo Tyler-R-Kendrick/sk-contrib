@@ -1,0 +1,8 @@
+<Project>
+  <Import Project="../../Directory.Build.targets" />
+
+  <PropertyGroup>
+    <RootNamespace>$(RootNamespace).PromptFilters.$(MsBuildProjectName)</RootNamespace>
+  </PropertyGroup>
+
+</Project>
