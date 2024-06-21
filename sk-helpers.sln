@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7B8E28B9-FA5B-4353-B976-8C00776F6D07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{7D688C99-1CB0-42A3-9D47-8163730C2FB0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileProvider", "src\Plugins\FileProvider\SKHelpers.Plugins.FileProvider.csproj", "{BDF33FC0-AE0B-467A-899F-73F7AD8EFE86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.Caching", "src\Plugins\Caching\SKHelpers.Plugins.Caching.csproj", "{B8FEAA70-E8AF-4984-A845-CC7A65F53E7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.EntityFrameworkCore", "src\Plugins\EntityFrameworkCore\SKHelpers.Plugins.EntityFrameworkCore.csproj", "{B5D5126C-1931-4F59-8390-080B7D77EC1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.Dapr", "src\Plugins\Dapr\SKHelpers.Plugins.Dapr.csproj", "{77B669DD-7D18-44BD-B9E3-415318A8629D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDF33FC0-AE0B-467A-899F-73F7AD8EFE86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDF33FC0-AE0B-467A-899F-73F7AD8EFE86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDF33FC0-AE0B-467A-899F-73F7AD8EFE86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDF33FC0-AE0B-467A-899F-73F7AD8EFE86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8FEAA70-E8AF-4984-A845-CC7A65F53E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8FEAA70-E8AF-4984-A845-CC7A65F53E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8FEAA70-E8AF-4984-A845-CC7A65F53E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8FEAA70-E8AF-4984-A845-CC7A65F53E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D5126C-1931-4F59-8390-080B7D77EC1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D5126C-1931-4F59-8390-080B7D77EC1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D5126C-1931-4F59-8390-080B7D77EC1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D5126C-1931-4F59-8390-080B7D77EC1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77B669DD-7D18-44BD-B9E3-415318A8629D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77B669DD-7D18-44BD-B9E3-415318A8629D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77B669DD-7D18-44BD-B9E3-415318A8629D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77B669DD-7D18-44BD-B9E3-415318A8629D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7D688C99-1CB0-42A3-9D47-8163730C2FB0} = {7B8E28B9-FA5B-4353-B976-8C00776F6D07}
+		{BDF33FC0-AE0B-467A-899F-73F7AD8EFE86} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
+		{B8FEAA70-E8AF-4984-A845-CC7A65F53E7F} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
+		{B5D5126C-1931-4F59-8390-080B7D77EC1A} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
+		{77B669DD-7D18-44BD-B9E3-415318A8629D} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6B4EF6B0-EDB2-4462-9441-EB8202C3CAEE}
+	EndGlobalSection
+EndGlobal

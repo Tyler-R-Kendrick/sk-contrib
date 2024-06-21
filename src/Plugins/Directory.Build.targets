@@ -1,0 +1,9 @@
+<Project>
+
+  <Import Project="../../Directory.Build.targets" />
+
+  <PropertyGroup>
+    <RootNamespace>$(RootNamespace).Plugins</RootNamespace>
+  </PropertyGroup>
+
+</Project>
