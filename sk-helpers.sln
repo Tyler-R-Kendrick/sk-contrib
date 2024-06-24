@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.Logging",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkHelpers.Plugins.RulesEngine", "src\Plugins\RulesEngine\SkHelpers.Plugins.RulesEngine.csproj", "{235A3EA2-586B-4A27-9C0B-AB86FBF56D6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.StateMachine", "src\Plugins\StateMachine\SKHelpers.Plugins.StateMachine.csproj", "{296135F4-3E51-4ABD-A354-BB780F7E050F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{235A3EA2-586B-4A27-9C0B-AB86FBF56D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{235A3EA2-586B-4A27-9C0B-AB86FBF56D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{235A3EA2-586B-4A27-9C0B-AB86FBF56D6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{296135F4-3E51-4ABD-A354-BB780F7E050F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{296135F4-3E51-4ABD-A354-BB780F7E050F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{296135F4-3E51-4ABD-A354-BB780F7E050F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{296135F4-3E51-4ABD-A354-BB780F7E050F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{44D4668C-ADBD-47DB-A5C3-DAC938B39DA7} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
 		{7A568113-D754-4E55-8E1C-1AF35076D4ED} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
 		{235A3EA2-586B-4A27-9C0B-AB86FBF56D6E} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
+		{296135F4-3E51-4ABD-A354-BB780F7E050F} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6B4EF6B0-EDB2-4462-9441-EB8202C3CAEE}
