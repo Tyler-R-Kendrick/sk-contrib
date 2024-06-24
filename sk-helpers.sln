@@ -43,6 +43,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SKHelpers.Plugins.IFTTT", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SKHelpers.Plugins.GraphQL", "src\Plugins\GraphQL\SKHelpers.Plugins.GraphQL.csproj", "{903F6644-FC9A-41A9-B926-5A0F575D3002}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.SmartThings", "src\Plugins\SmartThings\SKHelpers.Plugins.SmartThings.csproj", "{8B306F3F-FD40-4774-8138-429AA71E97A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,10 @@ Global
 		{903F6644-FC9A-41A9-B926-5A0F575D3002}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{903F6644-FC9A-41A9-B926-5A0F575D3002}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{903F6644-FC9A-41A9-B926-5A0F575D3002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B306F3F-FD40-4774-8138-429AA71E97A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B306F3F-FD40-4774-8138-429AA71E97A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B306F3F-FD40-4774-8138-429AA71E97A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B306F3F-FD40-4774-8138-429AA71E97A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -145,6 +151,7 @@ Global
 		{B1601801-CE6E-4896-8B83-EA409ECABC75} = {E395F9CB-618C-4ADC-A6B0-544A06F979A1}
 		{87412175-16E7-462A-9CA9-F740F7B30188} = {E395F9CB-618C-4ADC-A6B0-544A06F979A1}
 		{903F6644-FC9A-41A9-B926-5A0F575D3002} = {E395F9CB-618C-4ADC-A6B0-544A06F979A1}
+		{8B306F3F-FD40-4774-8138-429AA71E97A0} = {E395F9CB-618C-4ADC-A6B0-544A06F979A1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0C083B95-F59D-4C75-A700-3D8F4C65C569}

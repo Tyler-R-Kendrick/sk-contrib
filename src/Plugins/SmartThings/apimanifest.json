@@ -1,0 +1,115 @@
+{
+    "applicationName": "IFTTT Plugin",
+    "description": "This plugin accesses GitHub API to control configured triggers.",
+    "publisher": {
+        "name": "Tyler",
+        "contactEmail": "contact.tylerkendrick@gmail.com"
+    },
+    "apiDependencies": {
+        "smart-things": {
+            "apiDescriptionUrl": "https://swagger.api.smartthings.com/public/st-api.yml",
+            "requests": [
+                {
+                    "method": "GET",
+                    "uriTemplate": "/locations"
+                },                
+                {
+                    "method": "GET",
+                    "uriTemplate": "/locations/{locationId}"
+                },       
+                {
+                    "method": "GET",
+                    "uriTemplate": "/locations/{locationId}/rooms"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/rooms"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/rooms/{roomId}"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/modes"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/modes/{modeId}"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/rules"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/rules/{ruleId}"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/scenes"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/scenes/{sceneId}"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/devices"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/devices/{deviceId}"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/deviceProfiles"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/deviceProfiles/{deviceProfileId}"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/capabilities"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/capabilities/{capabilityId}"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/presentations"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/presentations/{presentationId}"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/apps"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/apps/{appId}"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/schedules"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/schedules/{scheduleId}"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/subscriptions"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/subscriptions/{subscriptionId}"
+                }
+            ]
+        }
+    }
+}
