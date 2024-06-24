@@ -22,5 +22,6 @@
     <PackageVersion Include="RulesEngine" Version="5.0.3" />
     <PackageVersion Include="Stateless" Version="5.16.0" />
     <PackageVersion Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+    <PackageVersion Include="Twilio" Version="7.2.0" />
   </ItemGroup>
 </Project>
