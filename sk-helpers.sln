@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.Spark", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.Regex", "src\Plugins\Regex\SKHelpers.Plugins.Regex.csproj", "{D58911C8-9729-4503-96D2-AAF30881D072}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.Cryptography", "src\Plugins\Cryptography\SKHelpers.Plugins.Cryptography.csproj", "{665D4D55-8B18-42E6-A95B-4B87ECB3E77C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{D58911C8-9729-4503-96D2-AAF30881D072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D58911C8-9729-4503-96D2-AAF30881D072}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D58911C8-9729-4503-96D2-AAF30881D072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{665D4D55-8B18-42E6-A95B-4B87ECB3E77C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{665D4D55-8B18-42E6-A95B-4B87ECB3E77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{665D4D55-8B18-42E6-A95B-4B87ECB3E77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{665D4D55-8B18-42E6-A95B-4B87ECB3E77C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -110,6 +116,7 @@ Global
 		{1F26AAC6-35B8-4798-8167-0F90D217D34C} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
 		{768D8E05-4A9B-4AA9-ABF6-8F978D94F9FF} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
 		{D58911C8-9729-4503-96D2-AAF30881D072} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
+		{665D4D55-8B18-42E6-A95B-4B87ECB3E77C} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6B4EF6B0-EDB2-4462-9441-EB8202C3CAEE}
