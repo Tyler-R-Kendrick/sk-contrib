@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.StateMach
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.VectorSearch", "src\Plugins\VectorSearch\SKHelpers.Plugins.VectorSearch.csproj", "{1F26AAC6-35B8-4798-8167-0F90D217D34C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.Spark", "src\Plugins\Spark\SKHelpers.Plugins.Spark.csproj", "{768D8E05-4A9B-4AA9-ABF6-8F978D94F9FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{1F26AAC6-35B8-4798-8167-0F90D217D34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F26AAC6-35B8-4798-8167-0F90D217D34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F26AAC6-35B8-4798-8167-0F90D217D34C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{768D8E05-4A9B-4AA9-ABF6-8F978D94F9FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{768D8E05-4A9B-4AA9-ABF6-8F978D94F9FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{768D8E05-4A9B-4AA9-ABF6-8F978D94F9FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{768D8E05-4A9B-4AA9-ABF6-8F978D94F9FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +102,7 @@ Global
 		{235A3EA2-586B-4A27-9C0B-AB86FBF56D6E} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
 		{296135F4-3E51-4ABD-A354-BB780F7E050F} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
 		{1F26AAC6-35B8-4798-8167-0F90D217D34C} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
+		{768D8E05-4A9B-4AA9-ABF6-8F978D94F9FF} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6B4EF6B0-EDB2-4462-9441-EB8202C3CAEE}
