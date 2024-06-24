@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.CLI", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.GraphQL", "src\Plugins\GraphQL\SKHelpers.Plugins.GraphQL.csproj", "{4A9A3A4B-4250-41AE-ABA9-9A358B2C8AC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKHelpers.Plugins.GraphSearch", "src\Plugins\GraphSearch\SKHelpers.Plugins.GraphSearch.csproj", "{44D4668C-ADBD-47DB-A5C3-DAC938B39DA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{4A9A3A4B-4250-41AE-ABA9-9A358B2C8AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A9A3A4B-4250-41AE-ABA9-9A358B2C8AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A9A3A4B-4250-41AE-ABA9-9A358B2C8AC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44D4668C-ADBD-47DB-A5C3-DAC938B39DA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44D4668C-ADBD-47DB-A5C3-DAC938B39DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44D4668C-ADBD-47DB-A5C3-DAC938B39DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44D4668C-ADBD-47DB-A5C3-DAC938B39DA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{77B669DD-7D18-44BD-B9E3-415318A8629D} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
 		{EABB3EBD-83E2-42A9-9D60-9E54ADC8C9F2} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
 		{4A9A3A4B-4250-41AE-ABA9-9A358B2C8AC7} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
+		{44D4668C-ADBD-47DB-A5C3-DAC938B39DA7} = {7D688C99-1CB0-42A3-9D47-8163730C2FB0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6B4EF6B0-EDB2-4462-9441-EB8202C3CAEE}
