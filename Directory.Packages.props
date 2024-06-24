@@ -1,5 +1,6 @@
 <Project>
   <ItemGroup>
+    <PackageVersion Include="GraphQL.SystemTextJson" Version="7.8.0" />
     <PackageVersion Include="Microsoft.SemanticKernel" Version="1.14.0" />
     <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="5.0.0" />
     <PackageVersion Include="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0" />
