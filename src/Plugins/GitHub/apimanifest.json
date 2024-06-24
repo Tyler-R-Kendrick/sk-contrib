@@ -1,6 +1,6 @@
 {
     "applicationName": "IFTTT Plugin",
-    "description": "This plugin accesses IFTTT API to control configured triggers.",
+    "description": "This plugin accesses GitHub API to control configured triggers.",
     "publisher": {
         "name": "Tyler",
         "contactEmail": "contact.tylerkendrick@gmail.com"

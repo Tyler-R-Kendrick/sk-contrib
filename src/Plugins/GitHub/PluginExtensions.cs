@@ -11,7 +11,7 @@ public static class DependencyInjectionExtensions
         CancellationToken cancellationToken = default)
     {
         _ = await kernel.ImportPluginFromApiManifestAsync(
-            "GitHub",
+            "github",
             "GitHub/apimanifest.json",
             apiManifestPluginParameters,
             cancellationToken)
