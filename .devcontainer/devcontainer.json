@@ -5,7 +5,10 @@
 			"extensions": [
 				"ms-dotnettools.csdevkit",
 				"GitHub.copilot",
-				"EditorConfig.EditorConfig"
+				"EditorConfig.EditorConfig",
+				"ms-graph.kiota",
+				"ms-semantic-kernel.semantic-kernel",
+				"ms-toolsai.prompty"
 			]
 		}
 	}

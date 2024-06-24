@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Kiota.Abstractions" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Form" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Json" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Text" />
+    <PackageReference Include="Microsoft.SemanticKernel.Plugins.OpenApi.Extensions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="IFTTT\IFTTTClient.cs" />
+  </ItemGroup>
+</Project>
