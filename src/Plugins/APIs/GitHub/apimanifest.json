@@ -1,5 +1,5 @@
 {
-    "applicationName": "IFTTT Plugin",
+    "applicationName": "GitHub Plugin",
     "description": "This plugin accesses GitHub API to control configured triggers.",
     "publisher": {
         "name": "Tyler",
