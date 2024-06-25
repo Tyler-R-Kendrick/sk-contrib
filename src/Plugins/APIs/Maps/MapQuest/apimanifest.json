@@ -1,0 +1,35 @@
+{
+    "applicationName": "MapQuest Plugin",
+    "description": "This plugin accesses MapQuest API to retrieve location and routing-based information.",
+    "publisher": {
+        "name": "Tyler",
+        "contactEmail": "contact.tylerkendrick@gmail.com"
+    },
+    "apiDependencies": {
+        "mapQuest": {
+            "apiDescriptionUrl": "https://developer.mapquest.com/documentation/openapi/swagger.yaml",
+            "requests": [
+                {
+                    "method": "GET",
+                    "uriTemplate": "/geocoding/v1/address"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/geocoding/v1/reverse"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/search/v2/radius"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/search/v2/rectangle"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/directions/v2/route"
+                }
+            ]
+        }
+    }
+}
