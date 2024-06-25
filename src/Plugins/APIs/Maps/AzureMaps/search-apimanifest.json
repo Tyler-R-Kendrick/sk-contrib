@@ -1,0 +1,35 @@
+{
+    "applicationName": "Azure Maps Search Plugin",
+    "description": "This plugin accesses Azure Maps API to retrieve search-based information.",
+    "publisher": {
+        "name": "Tyler",
+        "contactEmail": "contact.tylerkendrick@gmail.com"
+    },
+    "apiDependencies": {
+        "azureMaps": {
+            "apiDescriptionUrl": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/maps/data-plane/Microsoft.Maps/Search/preview/1.0/search.json",
+            "requests": [
+                {
+                    "method": "GET",
+                    "uriTemplate": "/search/address/json"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/search/address/reverse/json"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/search/poi/json"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/search/poi/category/json"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/search/fuzzy/json"
+                }
+            ]
+        }
+    }
+}

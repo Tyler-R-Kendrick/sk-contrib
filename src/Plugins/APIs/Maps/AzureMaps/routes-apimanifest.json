@@ -1,0 +1,27 @@
+{
+    "applicationName": "Azure Maps Route Plugin",
+    "description": "This plugin accesses Azure Maps API to retrieve route-based information.",
+    "publisher": {
+        "name": "Tyler",
+        "contactEmail": "contact.tylerkendrick@gmail.com"
+    },
+    "apiDependencies": {
+        "azureMaps": {
+            "apiDescriptionUrl": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/maps/data-plane/Microsoft.Maps/Route/preview/1.0/route.json",
+            "requests": [
+                {
+                    "method": "GET",
+                    "uriTemplate": "/route/directions/json"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/route/range/json"
+                },
+                {
+                    "method": "POST",
+                    "uriTemplate": "/route/matrix/json"
+                }
+            ]
+        }
+    }
+}
