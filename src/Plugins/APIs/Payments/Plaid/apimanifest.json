@@ -1,0 +1,51 @@
+{
+    "applicationName": "Plaid Plugin",
+    "description": "This plugin accesses Plaid API to retrieve financial data and manage payments.",
+    "publisher": {
+        "name": "Tyler",
+        "contactEmail": "contact.tylerkendrick@gmail.com"
+    },
+    "apiDependencies": {
+        "plaid": {
+            "apiDescriptionUrl": "https://plaid.com/docs/api/openapi/plaid.openapi.json",
+            "requests": [
+                {
+                    "method": "POST",
+                    "uriTemplate": "/accounts/get"
+                },
+                {
+                    "method": "POST",
+                    "uriTemplate": "/transactions/get"
+                },
+                {
+                    "method": "POST",
+                    "uriTemplate": "/accounts/balance/get"
+                },
+                {
+                    "method": "POST",
+                    "uriTemplate": "/identity/get"
+                },
+                {
+                    "method": "POST",
+                    "uriTemplate": "/auth/get"
+                },
+                {
+                    "method": "POST",
+                    "uriTemplate": "/payment_initiation/payment/create"
+                },
+                {
+                    "method": "POST",
+                    "uriTemplate": "/payment_initiation/payment/get"
+                },
+                {
+                    "method": "POST",
+                    "uriTemplate": "/payment_initiation/payment/list"
+                },
+                {
+                    "method": "POST",
+                    "uriTemplate": "/payment_initiation/payment/cancel"
+                }
+            ]
+        }
+    }
+}
