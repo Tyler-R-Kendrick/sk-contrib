@@ -1,0 +1,31 @@
+{
+    "applicationName": "Twitter Plugin",
+    "description": "This plugin accesses Twitter API to retrieve tweets.",
+    "publisher": {
+        "name": "Tyler",
+        "contactEmail": "contact.tylerkendrick@gmail.com"
+    },
+    "apiDependencies": {
+        "twitter": {
+            "apiDescriptionUrl": "https://api.twitter.com/2/openapi.json",
+            "requests": [
+                {
+                    "method": "GET",
+                    "uriTemplate": "/tweets/{id}"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/tweets"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/tweets/search/recent"
+                },
+                {
+                    "method": "GET",
+                    "uriTemplate": "/tweets/search/all"
+                }
+            ]
+        }
+    }
+}
