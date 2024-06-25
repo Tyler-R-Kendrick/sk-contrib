@@ -5,8 +5,9 @@ namespace SKHelpers.Plugins.GitHub;
 
 public static class DependencyInjectionExtensions
 {
-    public static async Task<Kernel> AddGitHubPluginAsync(
+    public static async Task<Kernel> AddApiPluginAsync(
         this Kernel kernel,
+        string key, string value,
         ApiManifestPluginParameters apiManifestPluginParameters,
         CancellationToken cancellationToken = default)
     {

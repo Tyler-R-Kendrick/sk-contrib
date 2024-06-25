@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <PackageReference Include="Twilio" />
+    <ProjectReference Include="../Common/*.csproj" />
   </ItemGroup>
 </Project>
