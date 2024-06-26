@@ -1,7 +1,0 @@
-<Project>
-
-  <ItemGroup>
-    <PackageReference Include="Microsot.Extensions.Logging.Abstractions" />
-  </ItemGroup>
-
-</Project>
