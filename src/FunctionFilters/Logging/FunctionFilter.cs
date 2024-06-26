@@ -8,11 +8,12 @@ using SKHelpers.FunctionFilters.Common;
 public abstract class FunctionFilter(ILogger logger)
     : BaseFunctionFilter
 {
-    protected abstract override Task OnFunctionInvokingAsync(
+    protected abstract Task OnFunctionInvokingAsync(
         FunctionInvocationContext context, ILogger logger);
 
-    protected abstract override Task OnFunctionInvokedAsync(
+    protected abstract Task OnFunctionInvokedAsync(
         FunctionInvocationContext context, ILogger logger);
+
     protected sealed override Task OnFunctionInvokingAsync(
         FunctionInvocationContext context)
         => OnFunctionInvokingAsync(context, logger);
