@@ -1,0 +1,19 @@
+{
+    "applicationName": "Paypal Plugin",
+    "description": "This plugin accesses Paypal API to retrieve financial data and manage payments.",
+    "publisher": {
+        "name": "Tyler",
+        "contactEmail": "contact.tylerkendrick@gmail.com"
+    },
+    "apiDependencies": {
+        "plaid": {
+            "apiDescriptionUrl": "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/main/openapi/vault_payment_tokens_v3.json",
+            "requests": [
+                {
+                    "method": "POST",
+                    "uriTemplate": "/"
+                }
+            ]
+        }
+    }
+}
