@@ -18,9 +18,10 @@
     <PackageVersion Include="Microsoft.Kiota.Serialization.Text" Version="1.2.2" />
     <PackageVersion Include="Microsoft.ML.Tokenizers" Version="0.22.0-preview.24271.1" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
-    <PackageVersion Include="Microsoft.SemanticKernel" Version="1.14.0" />
+    <PackageVersion Include="Microsoft.SemanticKernel" Version="[1.14.0,2.0.0)" />
     <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="5.0.0" />
     <PackageVersion Include="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Composite" Version="8.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.DynamicLinq" Version="8.4.0" />
     <PackageVersion Include="Dapr.Client" Version="1.13.0" />
