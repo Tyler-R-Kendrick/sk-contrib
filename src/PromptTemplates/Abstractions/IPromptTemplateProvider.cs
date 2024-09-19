@@ -5,31 +5,9 @@ namespace SemanticKernel.Community.PromptTemplates.Abstractions;
 
 public interface IPromptTemplateProvider
 {
-    async Task<PromptTemplateConfig> GetConfigAsync(
-        IFileInfo fileInfo,
-        string? templateFormat = null,
-        CancellationToken cancellationToken = default)
-    {
-        using var fileStream = fileInfo.CreateReadStream();
-        using StreamReader streamReader = new(fileStream);
-        var fileContents = await streamReader.ReadToEndAsync(cancellationToken);
-        return new()
-        {
-            Template = fileContents,
-            Name = fileInfo.Name,
-            TemplateFormat = templateFormat ?? PromptTemplateConfig.SemanticKernelTemplateFormat
-        };
-    }
-
-    Task<PromptTemplateConfig> GetConfigAsync(
-        string resource,
-        IFileProvider fileProvider,
-        string? templateFormat = null,
-        CancellationToken cancellationToken = default)
-    {
-        var fileInfo = fileProvider.GetFileInfo(resource);
-        return GetConfigAsync(fileInfo, templateFormat, cancellationToken);
-    }
+    Task<PromptTemplateConfig> GetAsync(
+        string resourceName,
+        CancellationToken cancellationToken = default);
 }
 
 /// <summary>
@@ -38,5 +16,37 @@ public interface IPromptTemplateProvider
 /// </summary>
 public interface IPromptTemplateProviderBuilder
 {
+    IPromptTemplateProviderBuilder Add(PromptTemplateConfig config);
     IPromptTemplateProvider Build();
+}
+
+public static partial class PromptTemplateProviderBuilderFileProviderExtensions
+{
+    public static async Task<IPromptTemplateProviderBuilder> AddFileInfoAsync(
+        this IPromptTemplateProviderBuilder builder,
+        IFileInfo fileInfo,
+        string? templateFormat = null,
+        CancellationToken cancellationToken = default)
+    {
+        using var fileStream = fileInfo.CreateReadStream();
+        using StreamReader streamReader = new(fileStream);
+        var fileContents = await streamReader.ReadToEndAsync(cancellationToken);
+        return builder.Add(new()
+        {
+            Name = fileInfo.Name,
+            Template = fileContents,
+            TemplateFormat = templateFormat ?? PromptTemplateConfig.SemanticKernelTemplateFormat
+        });
+    }
+
+    public static Task<IPromptTemplateProviderBuilder> AddFileNameAsync(
+        this IPromptTemplateProviderBuilder builder,
+        string resourceName,
+        IFileProvider fileProvider,
+        string? templateFormat = null,
+        CancellationToken cancellationToken = default)
+    {
+        var fileInfo = fileProvider.GetFileInfo(resourceName);
+        return AddFileInfoAsync(builder, fileInfo, templateFormat, cancellationToken);
+    }
 }
