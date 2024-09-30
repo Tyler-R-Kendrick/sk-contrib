@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>SKHelpers</RootNamespace>
+    <RootNamespace>SemenaticKernel.Community</RootNamespace>
     <RootDirectory>$(MSBuildThisFileDirectory)</RootDirectory>
   </PropertyGroup>
 
