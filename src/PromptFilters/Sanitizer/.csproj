@@ -1,7 +1,0 @@
-<Project>
-
-  <ItemGroup>
-    <PackageReference Include="Hygiene" />
-  </ItemGroup>
-
-</Project>

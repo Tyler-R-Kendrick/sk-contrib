@@ -1,7 +1,0 @@
-<Project>
-
-  <ItemGroup>
-    <PackageReference Include="Microsot.Extensions.Caching.Abstractions" />
-  </ItemGroup>
-
-</Project>

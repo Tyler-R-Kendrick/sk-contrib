@@ -1,7 +1,0 @@
-<Project>
-
-  <ItemGroup>
-    <PackageReference Include="Humanizer" />
-  </ItemGroup>
-
-</Project>

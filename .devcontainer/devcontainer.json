@@ -6,7 +6,6 @@
 				"ms-dotnettools.csdevkit",
 				"GitHub.copilot",
 				"EditorConfig.EditorConfig",
-				"ms-graph.kiota",
 				"ms-semantic-kernel.semantic-kernel",
 				"ms-toolsai.prompty"
 			]
