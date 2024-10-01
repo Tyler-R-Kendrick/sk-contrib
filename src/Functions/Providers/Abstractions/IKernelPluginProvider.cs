@@ -1,8 +1,7 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.SemanticKernel;
+using System.Runtime.CompilerServices;
 
 namespace SemanticKernel.Community.Functions.Providers.Abstractions;
 
@@ -41,19 +40,19 @@ public static partial class KernelPluginProviderBuilderFileProviderExtensions
         var kernelFunctions = new List<KernelFunction>();
         await foreach(var kernelFunction in GetAsync(
             directoryContents,
-            promptTemplateFactory,
+            promptTemplateFactory ?? new KernelPromptTemplateFactory(),
             templateFormat,
             loggerFactory,
             cancellationToken))
             kernelFunctions.Add(kernelFunction);
-        return Add(builder, pluginName, kernelFunctions.ToArray());
+        return Add(builder, pluginName, [.. kernelFunctions]);
     }
     private static async IAsyncEnumerable<KernelFunction> GetAsync(
         IDirectoryContents directoryContents,
         IPromptTemplateFactory promptTemplateFactory,
         string? templateFormat,
         ILoggerFactory? loggerFactory,
-        CancellationToken cancellationToken = default)
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         foreach (var fileInfo in directoryContents)
         {

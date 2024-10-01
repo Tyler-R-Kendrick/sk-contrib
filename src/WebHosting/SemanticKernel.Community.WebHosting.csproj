@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Humanizer.Core" />
+    <PackageReference Include="Microsoft.SemanticKernel.Agents.Core" />
+  </ItemGroup>
+</Project>
