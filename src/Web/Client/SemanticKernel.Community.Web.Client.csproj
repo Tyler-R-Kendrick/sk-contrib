@@ -1,2 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SemanticKernel.Plugins.OpenApi.Extensions" />
+  </ItemGroup>
 </Project>
