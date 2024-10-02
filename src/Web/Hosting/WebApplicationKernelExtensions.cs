@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Services;
 using SemanticKernel.Community.WebHosting.Filters;
@@ -129,10 +127,9 @@ public static class WebApplicationKernelExtensions
     private static RouteHandlerBuilder MapSocket(
         this IEndpointRouteBuilder app, string path, Action<WebSocket> onSocket)
     {
-        //TODO: Figure out how to register the paths. Appears to be a bug with async delegates.
-        return app.Map(path, async () =>
+        Delegate @delegate = async (HttpContext context) =>
         {
-            var manager = app.ServiceProvider.GetRequiredService<WebSocketManager>();
+            var manager = context.WebSockets;
             if(manager.IsWebSocketRequest)
             {
                 var socketTask = await manager.AcceptWebSocketAsync();
@@ -140,8 +137,9 @@ public static class WebApplicationKernelExtensions
                 onSocket(socket);
                 return Results.Accepted();
             }
-            return Results.Ok();
-        });
+            return Results.BadRequest("Not a WebSocket request.");
+        };
+        return app.Map(path, @delegate);
     }
 
     public static IEndpointRouteBuilder MapKernelPlugins(

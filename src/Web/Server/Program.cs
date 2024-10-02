@@ -1,6 +1,5 @@
 using Microsoft.SemanticKernel;
 using SemanticKernel.Community.WebHosting;
-using SemanticKernel.Community.WebHosting.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,7 +35,3 @@ kernel.Data["Summaries"] = summaries;
 app.MapKernel(kernel);
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
