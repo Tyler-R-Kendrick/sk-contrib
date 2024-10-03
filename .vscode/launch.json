@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "dotnet: build",
-            "program": "${workspaceFolder}/src/Web/Server/bin/Debug/net8.0/Server.dll",
+            "program": "${workspaceFolder}/src/Web/Server/bin/Debug/net8.0/SemanticKernel.Community.Web.Server.dll",
             "args": [],
             "cwd": "${workspaceFolder}/src/Web/Server",
             "stopAtEntry": false,
