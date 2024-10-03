@@ -1,4 +1,4 @@
-using SemanticKernel.Community.WebHosting;
+using SemanticKernel.Community.Web.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,5 +31,4 @@ kernel.Data["Summaries"] = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 app.MapKernel(kernel);
-app.Run();
-
+await app.RunAsync();

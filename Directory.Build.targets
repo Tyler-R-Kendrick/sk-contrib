@@ -3,8 +3,8 @@
   <PropertyGroup>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>SemenaticKernel.Community</RootNamespace>
     <RootDirectory>$(MSBuildThisFileDirectory)</RootDirectory>
+    
   </PropertyGroup>
 
 </Project>

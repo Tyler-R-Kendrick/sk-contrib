@@ -1,0 +1,10 @@
+<Project>
+    <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.props, $(MSBuildThisFileDirectory)..))" />
+
+    <PropertyGroup>
+        <ProjectDirectoryRelativePath>$([System.IO.Path]::GetRelativePath($(MSBuildThisFileDirectory), $(MSBuildProjectDirectory)))</ProjectDirectoryRelativePath>
+        <ProjectDirectoryPathNamespace>$(ProjectDirectoryRelativePath.Replace("\\", '.').Replace("/", '.'))</ProjectDirectoryPathNamespace>
+        <AssemblyName>$(AssemblyName).$(ProjectDirectoryPathNamespace)</AssemblyName>
+    </PropertyGroup>
+
+</Project>

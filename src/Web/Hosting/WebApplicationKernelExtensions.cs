@@ -31,11 +31,7 @@ public static class WebApplicationKernelExtensions
                     input,
                     settings,
                     cancellationToken: token);
-                return new FunctionResultRecord(
-                    response.Function,
-                    response.Metadata,
-                    response.RenderedPrompt,
-                    response.ValueType?.FullName);
+                return (FunctionResultRecord)response;
             })
             .WithOpenApi();
         kernelGroup.MapSockets(kernel);

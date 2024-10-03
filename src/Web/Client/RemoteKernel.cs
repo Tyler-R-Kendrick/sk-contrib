@@ -3,16 +3,38 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 
 namespace SemanticKernel.Community.Web.Client;
+using Serialization;
 
-public static class RemoteKernelBuilder
+public static class RemoteKernelBuilderExtensions
 {
-    public static async Task<KernelFunction> GetFunctionAsync(Uri uri,
+    public static async Task AddRemotePluginAsync(
+        this IKernelBuilderPlugins plugins,
+        string pluginName,
+        Uri uri)
+    {
+        HttpClient httpClient = new() { BaseAddress = uri };
+        var pluginRecord = await httpClient.GetFromJsonAsync<KernelPluginRecord>($"plugins/{pluginName}")
+            ?? throw new SerializationException("Failed to deserialize plugin.");
+        List<KernelFunction> functions = [];
+        foreach (var (name, function) in pluginRecord.Functions)
+        {
+            functions.Add(function);
+        }
+        var plugin = KernelPluginFactory.CreateFromFunctions(
+            pluginName,
+            pluginRecord.Description,
+            functions);
+        plugins.Add(plugin);
+    }
+
+    public static async Task<KernelFunction> GetFunctionAsync(
+        Uri uri,
         string pluginName,
         string functionName)
     {
         HttpClient httpClient = new() { BaseAddress = uri };
         var functionPath = $"plugins/{pluginName}/functions/{functionName}";
-        var function = await httpClient.GetFromJsonAsync<KernelFunction>(functionPath)
+        var function = await httpClient.GetFromJsonAsync<KernelFunctionRecord>(functionPath)
             ?? throw new SerializationException("Failed to deserialize function.");
         var metadata = function.Metadata;
         var parameterMetadata = metadata.Parameters;
@@ -29,17 +51,17 @@ public static class RemoteKernelBuilder
             return result ?? throw new SerializationException("Failed to deserialize function result.");
         }
 
-        KernelFunctionFactory.CreateFromMethod(
+        return KernelFunctionFactory.CreateFromMethod(
             method: Invoke,
-            functionName: function.Name,
-            description: function.Description,
-            parameters: parameterMetadata,
+            functionName: function.Metadata.Name,
+            description: function.Metadata.Description,
+            parameters: parameterMetadata.Select(x => (KernelParameterMetadata)x),
             returnParameter: returnParameterMetadata
         );
-        return function;
     }
 
-    public static async Task<IKernelBuilderPlugins> AddFromUriAsync(this IKernelBuilderPlugins plugins, Uri uri)
+    public static async Task<IKernelBuilderPlugins> AddFromUriAsync(
+        this IKernelBuilderPlugins plugins, Uri uri)
     {
         HttpClient httpClient = new() { BaseAddress = uri };
         var remotePluginDictionaryResponse = await httpClient.GetStringAsync("plugins");
@@ -66,10 +88,3 @@ public static class RemoteKernelBuilder
         return kernelBuilder.Build();
     }
 }
-
-// public class RemoteKernel : IAIService
-// {
-//     public IReadOnlyDictionary<string, object?> Attributes => throw new NotImplementedException();
-
-//     public explicit operator Kernel(RemoteKernel remoteKernel) => remoteKernel.Kernel;
-// }
