@@ -1,6 +1,5 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.ML.Tokenizers;
-using Microsoft.SemanticKernel;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Constraints;

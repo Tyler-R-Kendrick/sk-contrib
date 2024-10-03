@@ -1,8 +1,6 @@
-using System.Collections.ObjectModel;
 using System.Net.Http.Json;
 using System.Runtime.Serialization;
 using System.Text.Json;
-using Microsoft.SemanticKernel;
 
 namespace SemanticKernel.Community.Web.Client;
 

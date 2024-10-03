@@ -1,5 +1,4 @@
 using System.Collections;
-using Microsoft.SemanticKernel;
 
 namespace SKHelpers.FunctionFilters.Common;
 

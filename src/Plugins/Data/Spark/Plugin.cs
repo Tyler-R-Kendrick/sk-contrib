@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using Microsoft.SemanticKernel;
 using Microsoft.Spark.Sql;
 using Microsoft.Spark.Sql.Streaming;
 

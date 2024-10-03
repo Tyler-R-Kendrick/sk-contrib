@@ -1,5 +1,4 @@
 using Microsoft.ML.Tokenizers;
-using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 
 namespace SKHelpers.Constraints;

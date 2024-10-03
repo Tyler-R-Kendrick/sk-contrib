@@ -1,5 +1,4 @@
-﻿using Microsoft.SemanticKernel;
-using Dapr.Client;
+﻿using Dapr.Client;
 using System.ComponentModel;
 
 namespace SKHelpers.Plugins.Caching;

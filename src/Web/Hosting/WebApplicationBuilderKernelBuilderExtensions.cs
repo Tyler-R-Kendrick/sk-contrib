@@ -1,24 +1,16 @@
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.SemanticKernel;
 
-namespace SemanticKernel.Community.WebHosting;
+namespace SemanticKernel.Community.Web.Hosting;
 
 public static class WebApplicationBuilderKernelBuilderExtensions
 {
-    public static WebApplicationBuilder UseKernel(this WebApplicationBuilder builder, Kernel kernel)
-    {
-        builder.Services.AddSingleton(kernel);
-        return builder;
-    }
-    public static WebApplicationBuilder AddSemanticKernel(this WebApplicationBuilder builder, Action<IKernelBuilder> configure)
-    {
-        builder.Services.AddTransient(provider =>
+    public static IServiceCollection AddSemanticKernel(
+        this IServiceCollection services, Action<IKernelBuilder> configure)
+        => services.AddTransient(provider =>
         {
-            var kernelBuilder = provider.GetService<IKernelBuilder>() ?? Kernel.CreateBuilder();
+            var kernelBuilder = provider.GetService<IKernelBuilder>()
+                ?? Kernel.CreateBuilder();
             configure(kernelBuilder);
             return kernelBuilder.Build();
         });
-        return builder;
-    }
 }

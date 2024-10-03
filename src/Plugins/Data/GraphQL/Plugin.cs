@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using Microsoft.SemanticKernel;
 using GraphQL;
 using GraphQL.Types;
 using GraphQL.SystemTextJson;

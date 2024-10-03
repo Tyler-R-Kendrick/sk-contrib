@@ -1,9 +1,9 @@
 using System.Net.WebSockets;
 using System.Text.Json;
 
-namespace SemanticKernel.Community.WebHosting.Filters;
+namespace SemanticKernel.Community.Web.Hosting.Filters;
 
-internal static class WebSocketFilterHelpers
+internal static class WebSocketFilterExtensions
 {
     public static async Task HandleAsync<TContext>(
         this WebSocket socket,

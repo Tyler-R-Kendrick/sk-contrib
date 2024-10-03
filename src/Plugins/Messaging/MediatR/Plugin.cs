@@ -1,6 +1,5 @@
 using System.ComponentModel;
 using MediatR;
-using Microsoft.SemanticKernel;
 
 namespace SKHelpers.Plugins.MediatR;
 

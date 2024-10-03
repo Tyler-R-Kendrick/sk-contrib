@@ -1,6 +1,5 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.SemanticKernel;
 using System.Runtime.CompilerServices;
 
 namespace SemanticKernel.Community.Functions.Providers.Abstractions;

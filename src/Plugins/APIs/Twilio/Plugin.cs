@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using Microsoft.SemanticKernel;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;

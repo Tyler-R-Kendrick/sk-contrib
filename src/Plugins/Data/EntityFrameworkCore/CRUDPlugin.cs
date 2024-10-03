@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using Microsoft.SemanticKernel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 

@@ -1,5 +1,4 @@
 using Microsoft.Extensions.FileProviders;
-using Microsoft.SemanticKernel;
 
 namespace SemanticKernel.Community.PromptTemplates.Abstractions;
 

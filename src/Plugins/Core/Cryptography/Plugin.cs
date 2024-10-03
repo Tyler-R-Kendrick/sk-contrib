@@ -1,7 +1,6 @@
 using System.ComponentModel;
 using System.Security.Cryptography;
 using System.Text;
-using Microsoft.SemanticKernel;
 
 namespace SKHelpers.Plugins.Cryptography;
 public class AESCryptographyPlugin(string key, string iv)

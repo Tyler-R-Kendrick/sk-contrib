@@ -1,6 +1,5 @@
 using System.ComponentModel;
 using System.Diagnostics;
-using Microsoft.SemanticKernel;
 
 namespace SKHelpers.Plugins.CLI;
 

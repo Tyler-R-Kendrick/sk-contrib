@@ -1,7 +1,6 @@
 using System.ComponentModel;
 using System.Globalization;
 using Humanizer;
-using Microsoft.SemanticKernel;
 
 namespace SKHelpers.Plugins.Humanizer
 {

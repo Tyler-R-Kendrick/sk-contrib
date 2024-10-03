@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using Microsoft.SemanticKernel;
 
 namespace SKHelpers.Plugins.VectorSearch;
 

@@ -1,7 +1,6 @@
-using Microsoft.SemanticKernel;
 using System.Net.WebSockets;
 
-namespace SemanticKernel.Community.WebHosting.Filters;
+namespace SemanticKernel.Community.Web.Hosting.Filters;
 
 public class WebHookAutoFunctionInvocationFilter(WebSocket socket)
     : IAutoFunctionInvocationFilter

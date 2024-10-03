@@ -1,5 +1,3 @@
-using Microsoft.SemanticKernel;
-
 namespace SKHelpers.FunctionFilters.Common;
 public delegate Task FunctionFilter(
     FunctionInvocationContext context,

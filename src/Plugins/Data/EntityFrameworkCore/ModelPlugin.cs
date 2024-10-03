@@ -1,6 +1,5 @@
 using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.SemanticKernel;
 
 namespace SKHelpers.Plugins.EntityFrameworkCore;
 

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using System.ComponentModel;
-using Microsoft.SemanticKernel;
 
 namespace SKHelpers.Plugins.Caching;
 

@@ -1,6 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.SemanticKernel;
 
 namespace SKHelpers.Plugins.FileProvider;
 

@@ -1,6 +1,5 @@
 using System.ComponentModel;
 using System.Text.RegularExpressions;
-using Microsoft.SemanticKernel;
 
 namespace SKHelpers.Plugins.Regex;
 

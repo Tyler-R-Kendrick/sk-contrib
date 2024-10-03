@@ -1,10 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Humanizer.Core" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
     <PackageReference Include="Microsoft.SemanticKernel.Agents.Core" />
+    <ProjectReference Include="../Serialization/*.csproj" />
   </ItemGroup>
+
 </Project>

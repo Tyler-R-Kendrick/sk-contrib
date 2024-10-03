@@ -1,7 +1,6 @@
 using System.ComponentModel;
 using Gremlin.Net.Driver;
 using Gremlin.Net.Driver.Exceptions;
-using Microsoft.SemanticKernel;
 
 namespace SKHelpers.Plugins.Gremlin;
 

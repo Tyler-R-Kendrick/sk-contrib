@@ -1,139 +1,88 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.Services;
-using SemanticKernel.Community.WebHosting.Filters;
 using System.Net.WebSockets;
 using System.Runtime.Serialization;
 
-namespace SemanticKernel.Community.WebHosting;
+namespace SemanticKernel.Community.Web.Hosting;
+using Filters;
+using Serialization;
 
-public record FilterSocketConfig(string Uri);
 public static class WebApplicationKernelExtensions
 {
-    private static Delegate WriteKernelAsJsonAsync(Kernel kernel)
-        => () => Results.Json(new
-        {
-            Id = kernel.GetHashCode(),
-            //kernel.Culture,
-            kernel.Data,
-            Filters = new Dictionary<string, FilterSocketConfig>{
-                ["AutoFunctionInvocation"] = new("kernels/{kernelId}/filters/auto-function-invocation"),
-                ["FunctionInvocation"] = new("kernels/{kernelId}/filters/function-invocation"),
-                ["PromptRender"] = new("kernels/{kernelId}/filters/prompt-render"),
-            },
-            Services = WriteKernelServicesAsJsonAsync(kernel),
-            Plugins = WriteKernelPluginsAsJsonAsync(kernel),
-        });
-    private static Dictionary<string, IAIService> WriteKernelServicesAsJsonAsync(Kernel kernel)
-        => kernel.GetAllServices<IAIService>().ToDictionary(x => x.GetType().Name);
-    private static dynamic WriteKernelPluginAsJsonAsync(KernelPlugin plugin)
-    {
-        return new
-        {
-            plugin.Name,
-            plugin.Description,
-            Functions = WriteKernelFunctionsAsJsonAsync(plugin),
-        };
-    }
-
-    private static dynamic WriteKernelPluginsAsJsonAsync(Kernel kernel)
-    {
-        Dictionary<string, dynamic> serializedPlugins = [];
-        foreach(var plugin in kernel.Plugins)
-        {
-            serializedPlugins.Add(plugin.Name, new
-            {
-                plugin.Name,
-                plugin.Description,
-                Functions = WriteKernelFunctionsAsJsonAsync(plugin),
-            });
-        }
-        return serializedPlugins;
-    }
-    private static dynamic WriteKernelFunctionAsJsonAsync(KernelFunction function)
-    {
-        return new
-        {
-            Metadata = new
-            {
-                function.Metadata.Name,
-                function.Metadata.PluginName,
-                function.Metadata.Description,
-                Parameters = function.Metadata.Parameters.Select(parameter => new
-                {
-                    parameter.Name,
-                    parameter.Description,
-                    ParameterType = parameter.ParameterType?.FullName,
-                    parameter.Schema,
-                }),
-                ReturnParameter = new
-                {
-                    function.Metadata.ReturnParameter.Description,
-                    ParameterType = function.Metadata.ReturnParameter.ParameterType?.FullName,
-                    function.Metadata.ReturnParameter.Schema,
-                },
-                function.Metadata.AdditionalProperties,
-            },
-            function.ExecutionSettings,
-        };
-    }
-    private static Dictionary<string, dynamic> WriteKernelFunctionsAsJsonAsync(KernelPlugin plugin)
-    {
-        return plugin.ToDictionary(function => function.Name, WriteKernelFunctionAsJsonAsync);
-    }
-
     public static IEndpointRouteBuilder MapKernel(
         this IEndpointRouteBuilder app, Kernel kernel, PathString? path = null)
     {
         path ??= $"/";
         var kernelGroup = app.MapGroup(path);
         kernelGroup
-            .MapGet("/", WriteKernelAsJsonAsync(kernel))
+            .MapGet("/", () => Results.Json<KernelRecord>(kernel))
             .WithOpenApi();
         kernelGroup
-            .MapPost("/", async (KernelArguments args, CancellationToken token) =>
+            .MapPost("/", async (
+                InvokeArgs settings,
+                CancellationToken token) =>
             {
+                var (args, _) = settings;
 #pragma warning disable CA2208 // Instantiate argument exceptions correctly
                 var input = args["input"] as string ?? throw new ArgumentNullException("input");
 #pragma warning restore CA2208 // Instantiate argument exceptions correctly
-                return await kernel.InvokePromptAsync(input, args, cancellationToken: token);
+                var response = await kernel.InvokePromptAsync(
+                    input,
+                    settings,
+                    cancellationToken: token);
+                return new FunctionResultRecord(
+                    response.Function,
+                    response.Metadata,
+                    response.RenderedPrompt,
+                    response.ValueType?.FullName);
             })
             .WithOpenApi();
+        kernelGroup.MapSockets(kernel);
+        kernelGroup.MapKernelPlugins(kernel);
+        return kernelGroup;
+    }
 
+    public static IEndpointRouteBuilder MapSockets(
+        this IEndpointRouteBuilder kernelGroup, Kernel kernel)
+    {
         kernelGroup
             .MapSocket("/filters/auto-function-invocation", (socket) =>
                 kernel.AutoFunctionInvocationFilters.Add(
                     new WebHookAutoFunctionInvocationFilter(socket)))
             .WithName("AutoFunctionInvocation")
             .WithOpenApi();
+
         kernelGroup
             .MapSocket("/filters/function-invocation", (socket) =>
                 kernel.FunctionInvocationFilters.Add(
                     new WebHookFunctionInvocationFilter(socket)))
             .WithName("FunctionInvocation")
             .WithOpenApi();
+
         kernelGroup
             .MapSocket("/filters/prompt-render", (socket) =>
                 kernel.PromptRenderFilters.Add(
                     new WebHookPromptRenderFilter(socket)))
             .WithName("PromptRender")
             .WithOpenApi();
-        kernelGroup.MapKernelPlugins(kernel);
+
         return kernelGroup;
     }
 
-    private static RouteHandlerBuilder MapSocket(
+    public static RouteHandlerBuilder MapSocket(
         this IEndpointRouteBuilder app, string path, Action<WebSocket> onSocket)
     {
+        /*
+        * !Note: Avoid RequestDelegate as there is a known bug.
+        * Must cast to Delegate to avoid the bug.
+        */
         Delegate @delegate = async (HttpContext context) =>
         {
             var manager = context.WebSockets;
             if(manager.IsWebSocketRequest)
             {
-                var socketTask = await manager.AcceptWebSocketAsync();
-                var socket = socketTask;
+                var socket = await manager.AcceptWebSocketAsync();
                 onSocket(socket);
                 return Results.Accepted();
             }
@@ -146,9 +95,8 @@ public static class WebApplicationKernelExtensions
         this IEndpointRouteBuilder app, Kernel kernel)
     {
         var pluginsGroup = app.MapGroup("/plugins");
-        var pluginsDictionary = kernel.Plugins.ToDictionary(plugin => plugin.Name);
         pluginsGroup
-            .MapGet("/", () => WriteKernelPluginsAsJsonAsync(kernel))
+            .MapGet("/", () => Results.Json(kernel.Plugins.Select(plugin => (KernelPluginRecord)plugin)))
             .WithOpenApi();
         foreach (var plugin in kernel.Plugins)
         {
@@ -162,7 +110,7 @@ public static class WebApplicationKernelExtensions
     {
         var pluginGroup = app.MapGroup($"/{plugin.Name}");
         pluginGroup
-            .MapGet("/", () => WriteKernelPluginAsJsonAsync(plugin))
+            .MapGet("/", () => Results.Json((KernelPluginRecord)plugin))
             .WithOpenApi();
         pluginGroup.MapKernelFunctions(kernel, plugin);
         return pluginGroup;
@@ -173,7 +121,7 @@ public static class WebApplicationKernelExtensions
     {
         var functionsGroup = app.MapGroup("/functions");
         functionsGroup
-            .MapGet("/", () => WriteKernelFunctionsAsJsonAsync(plugin))
+            .MapGet("/", () => Results.Json(plugin.Select(function => (KernelFunctionRecord)function)))
             .WithOpenApi();
         foreach (var function in plugin)
         {
@@ -187,15 +135,15 @@ public static class WebApplicationKernelExtensions
     {
         var functionGroup = app.MapGroup($"/{function.Name}");
         functionGroup
-            .MapGet("/", () => WriteKernelFunctionAsJsonAsync(function))
+            .MapGet("/", () => Results.Json((KernelFunctionRecord)function))
             .WithOpenApi();
         functionGroup
-            .MapPost("/", async context =>
+            .MapPost("/", async (HttpContext context, CancellationToken token) =>
             {
                 var args = await context.Request.ReadFromJsonAsync<KernelArguments>(context.RequestAborted)
                     ?? throw new SerializationException("Failed to deserialize request body.");
-                var response = await function.InvokeAsync(kernel, args);
-                await context.Response.WriteAsJsonAsync(response);
+                var response = await function.InvokeAsync(kernel, args, token);
+                await context.Response.WriteAsJsonAsync(response, token);
             })
             .WithOpenApi();
         return functionGroup;

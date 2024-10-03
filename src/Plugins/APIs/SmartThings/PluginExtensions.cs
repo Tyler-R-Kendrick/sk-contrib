@@ -1,4 +1,3 @@
-using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Plugins.OpenApi.Extensions;
 
 namespace SKHelpers.Plugins.SmartThings;

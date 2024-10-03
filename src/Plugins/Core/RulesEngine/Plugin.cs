@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using Microsoft.SemanticKernel;
 using RulesEngine.Models;
 using Engine = RulesEngine.RulesEngine;
 using static Newtonsoft.Json.JsonConvert;

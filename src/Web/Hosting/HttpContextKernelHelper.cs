@@ -3,7 +3,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.SemanticKernel;
 
-namespace SemanticKernel.Community.WebHosting;
+namespace SemanticKernel.Community.Web.Hosting;
 
 public static class HttpContextKernelHelper
 {

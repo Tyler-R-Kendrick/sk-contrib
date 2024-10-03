@@ -1,21 +1,20 @@
-using Microsoft.SemanticKernel;
 using SemanticKernel.Community.WebHosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.AddSemanticKernel(kernelBuilder =>
-{
-    kernelBuilder.AddOpenAIChatCompletion("gpt-3", "your-openai-api-key");
-    kernelBuilder.Plugins
-        .AddFromFunctions("rewriter", [
-            KernelFunctionFactory.CreateFromPrompt("Rewrite the input to say: 'Hello, World!'"),
-            KernelFunctionFactory.CreateFromMethod((string input) => $"Hello, {input}!", "NativeFunction"),
-        ]);
-});
+builder.Services
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen()
+    .AddSemanticKernel(kernelBuilder =>
+    {
+        kernelBuilder.AddOpenAIChatCompletion("gpt-3", "your-openai-api-key");
+        kernelBuilder.Plugins
+            .AddFromFunctions("rewriter", [
+                KernelFunctionFactory.CreateFromPrompt("Rewrite the input to say: 'Hello, World!'"),
+                KernelFunctionFactory.CreateFromMethod((string input) => $"Hello, {input}!", "NativeFunction"),
+            ]);
+    });
+
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -26,12 +25,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+var kernel = app.Services.GetRequiredService<Kernel>();
+kernel.Data["Summaries"] = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
-var kernel = app.Services.GetRequiredService<Kernel>();
-kernel.Data["Summaries"] = summaries;
 app.MapKernel(kernel);
 app.Run();
 
