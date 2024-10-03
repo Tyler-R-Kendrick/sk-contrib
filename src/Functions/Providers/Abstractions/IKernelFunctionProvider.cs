@@ -29,7 +29,7 @@ public static partial class KernelFunctionProviderBuilderExtensions
         var promptTemplate = factory.Create(config);
         return WithPromptTemplate(builder, promptTemplate, config, loggerFactory);
     }
-    
+
     public static IKernelFunctionProviderBuilder WithPromptTemplate(
         this IKernelFunctionProviderBuilder builder,
         IPromptTemplate template,

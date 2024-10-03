@@ -20,7 +20,7 @@ public class Tests
         public IDictionary<string, IReadOnlyList<int>> TokenIds => Values.ToDictionary(x => x, x => tokenizer.EncodeToIds(x));
         public TestData(string valueString) : this(SplitValues(valueString)) { }
         public override string ToString() => Prompt;
-        
+
         private static string[] SplitValues(string valueString)
             => valueString.Split(", ").Select(x => x.Trim('\'').Trim()).ToArray();
     }
@@ -49,7 +49,7 @@ public class Tests
         var result = await GenTokens(prompt.ToString(), kernel, biases);
         Assert.That(result.ToString(), Is.AnyOf(prompt.Values));
     }
-    
+
     [TestCase("'One', 'Two', 'Three'", 1)]
     [TestCase("'1', '2', '3'", 1)]
     [TestCase("'One Potato', 'Two', '3 Potato', '4'", 3)]
@@ -66,7 +66,7 @@ public class Tests
                 [], maxTokens, prompt.Values);
             return result.ToString();
         }
-        
+
         var inclusiveResult = await GenToken(_ => 100, term => prompt.Values.Contains(term));
         Assert.That(inclusiveResult, Is.AnyOf(prompt.Values));
 

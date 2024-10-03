@@ -22,7 +22,7 @@ public static class CompositeFunctionFilterExtensions
         this CompositeFunctionFilter filter,
         PreFunctionFilter next)
         => filter.Add(new DelegateFunctionFilter(invoking: next));
-    
+
     public static void Add(
         this CompositeFunctionFilter filter,
         PostFunctionFilter next)

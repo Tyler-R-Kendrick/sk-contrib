@@ -51,7 +51,7 @@ public partial class CompositeFunctionFilter
         filter.Add(next);
         return filter;
     }
-    
+
     public static CompositeFunctionFilter operator +(
         CompositeFunctionFilter filter,
         FunctionFilter next)
@@ -59,7 +59,7 @@ public partial class CompositeFunctionFilter
         filter.Add(next);
         return filter;
     }
-    
+
     public static CompositeFunctionFilter operator +(
         CompositeFunctionFilter filter,
         PredicateFunctionFilter next)
@@ -67,7 +67,7 @@ public partial class CompositeFunctionFilter
         filter.Add(new DelegateFunctionFilter(shouldInvoke: next));
         return filter;
     }
-    
+
     public static CompositeFunctionFilter operator +(
         CompositeFunctionFilter filter,
         PreFunctionFilter next)
@@ -75,7 +75,7 @@ public partial class CompositeFunctionFilter
         filter.Add(new DelegateFunctionFilter(invoking: next));
         return filter;
     }
-    
+
     public static CompositeFunctionFilter operator +(
         CompositeFunctionFilter filter,
         PostFunctionFilter next)
@@ -83,7 +83,7 @@ public partial class CompositeFunctionFilter
         filter.Add(new DelegateFunctionFilter(invoked: next));
         return filter;
     }
-    
+
     public static CompositeFunctionFilter operator +(
         CompositeFunctionFilter filter,
         (
@@ -95,7 +95,7 @@ public partial class CompositeFunctionFilter
         filter.Add(tuple);
         return filter;
     }
-    
+
     public static CompositeFunctionFilter operator +(
         CompositeFunctionFilter filter,
         (

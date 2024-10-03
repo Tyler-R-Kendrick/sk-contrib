@@ -70,7 +70,7 @@ public static class RemoteKernelBuilderExtensions
         var remotePluginDictionary = JsonSerializer.Deserialize<Dictionary<string, KernelPlugin>>(remotePluginDictionaryResponse)
             ?? throw new SerializationException("Failed to deserialize plugin dictionary.");
         var remotePlugins = remotePluginDictionary.Values;
-        foreach(var plugin in remotePlugins)
+        foreach (var plugin in remotePlugins)
         {
             plugins.Add(plugin);
         }

@@ -21,7 +21,7 @@ public static class ConstrainedDecoding
         {
             var id = tokenIds[i];
             var bias = biasFunc((i, tokenIds.Count, id));
-            if(!biases.TryAdd(id, bias))
+            if (!biases.TryAdd(id, bias))
             {
                 biases[id] = bias;
             }
@@ -60,7 +60,7 @@ public static class ConstrainedDecoding
     {
         var biases = GetBias(indexedIds, biasFunc);
         var selectableTokenIds = biases.Where(x => x.Value == 100);
-        if(selectableTokenIds.Count() == 1)
+        if (selectableTokenIds.Count() == 1)
         {
             var tokenId = selectableTokenIds.First().Key;
             return tokenizer.MapIdToToken(tokenId)

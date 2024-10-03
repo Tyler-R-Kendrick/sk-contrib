@@ -7,7 +7,7 @@ public class DelegatedFunctionFilter(FunctionFilter? filter = null)
         FunctionInvocationContext context,
         Func<FunctionInvocationContext, Task> next)
         => filter?.Invoke(context, next) ?? next(context);
-    
+
     public static implicit operator DelegatedFunctionFilter(
         FunctionFilter filter)
         => new(filter);

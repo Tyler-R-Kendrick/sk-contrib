@@ -102,7 +102,7 @@ public record KernelFunctionParameterRecord(
             target.Schema,
             target.DefaultValue,
             target.IsRequired);
-    
+
     public static implicit operator KernelParameterMetadata(
         KernelFunctionParameterRecord target) => new(target.Name)
         {

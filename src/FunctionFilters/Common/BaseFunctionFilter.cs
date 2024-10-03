@@ -7,7 +7,7 @@ public class BaseFunctionFilter : IFunctionInvocationFilter
         Func<FunctionInvocationContext, Task> next)
     {
         await OnFunctionInvokingAsync(context);
-        if(await ShouldInvokeAsync(context)) await next(context);
+        if (await ShouldInvokeAsync(context)) await next(context);
         await OnFunctionInvokedAsync(context);
     }
 

@@ -37,7 +37,7 @@ public static partial class KernelPluginProviderBuilderFileProviderExtensions
     {
         var directoryContents = fileProvider.GetDirectoryContents(directoryPath);
         var kernelFunctions = new List<KernelFunction>();
-        await foreach(var kernelFunction in GetAsync(
+        await foreach (var kernelFunction in GetAsync(
             directoryContents,
             promptTemplateFactory ?? new KernelPromptTemplateFactory(),
             templateFormat,
@@ -62,7 +62,7 @@ public static partial class KernelPluginProviderBuilderFileProviderExtensions
             {
                 Name = fileInfo.Name,
                 Template = fileContents,
-                TemplateFormat =  templateFormat ?? PromptTemplateConfig.SemanticKernelTemplateFormat
+                TemplateFormat = templateFormat ?? PromptTemplateConfig.SemanticKernelTemplateFormat
             };
             var template = promptTemplateFactory.Create(config);
             yield return KernelFunctionFactory.CreateFromPrompt(template, config, loggerFactory);

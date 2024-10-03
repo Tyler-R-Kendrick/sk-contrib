@@ -15,7 +15,7 @@ namespace SKHelpers.Plugins.Spark
             string format)
             => dataFrame.Write().Format(format).Save(path);
 
-        
+
         [KernelFunction]
         [Description("Starts a streaming query.")]
         [return: Description("The StreamingQuery object.")]

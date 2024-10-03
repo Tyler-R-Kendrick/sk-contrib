@@ -76,7 +76,7 @@ public static class WebApplicationKernelExtensions
         Delegate @delegate = async (HttpContext context) =>
         {
             var manager = context.WebSockets;
-            if(manager.IsWebSocketRequest)
+            if (manager.IsWebSocketRequest)
             {
                 var socket = await manager.AcceptWebSocketAsync();
                 onSocket(socket);
