@@ -1,8 +1,0 @@
-<Project>
-  <Import Project="../../Directory.Build.targets" />
-
-  <PropertyGroup>
-    <RootNamespace>$(RootNamespace).FunctionFilters.$(MsBuildProjectName)</RootNamespace>
-  </PropertyGroup>
-
-</Project>

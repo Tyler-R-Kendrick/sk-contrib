@@ -1,8 +1,0 @@
-<Project>
-
-  <PropertyGroup>
-    <RootNamespace>$(RootNamespace).Plugins.$(MsBuildProjectName)</RootNamespace>
-  </PropertyGroup>
-
-  <Import Project="../../Directory.Build.targets" />
-</Project>

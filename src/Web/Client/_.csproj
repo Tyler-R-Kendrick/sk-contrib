@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <PackageReference Include="Microsoft.SemanticKernel.Plugins.OpenApi.Extensions" />
-    <ProjectReference Include="../Serialization/*.csproj" />
+    <ProjectReference Include="../Serialization/_.csproj" />
   </ItemGroup>
 </Project>

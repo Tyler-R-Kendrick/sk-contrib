@@ -3,7 +3,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
     <PackageReference Include="Swashbuckle.AspNetCore" />
-    <ProjectReference Include="../Hosting/*.csproj" />
+    <ProjectReference Include="../Hosting/_.csproj" />
   </ItemGroup>
 
 </Project>

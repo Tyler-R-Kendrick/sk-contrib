@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <ProjectReference Include="../Common/*.csproj" />
+    <ProjectReference Include="../Common/_.csproj" />
   </ItemGroup>
 </Project>

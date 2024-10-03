@@ -125,6 +125,7 @@ public record KernelFunctionReturnParameterRecord(
             target.Description,
             target.ParameterType?.FullName,
             target.Schema);
+
     public static implicit operator KernelReturnParameterMetadata(
         KernelFunctionReturnParameterRecord target) => new()
         {
@@ -140,6 +141,7 @@ public record InvokeArgs(
 {
     public static implicit operator KernelArguments(InvokeArgs args) =>
         new(args.KernelArguments, args.ExecutionSettings?.ToDictionary() ?? []);
+
     public static implicit operator InvokeArgs(KernelArguments args) =>
         new(args, args.ExecutionSettings);
 }
@@ -157,6 +159,7 @@ public record FunctionResultRecord(
         var genericMethod = methodInfo?.MakeGenericMethod(result.ValueType ?? typeof(string));
         return genericMethod?.Invoke(result, []);
     }
+
     public static implicit operator FunctionResultRecord(FunctionResult result) =>
         new(result.Function, result.Metadata, result.RenderedPrompt, result.ValueType?.FullName, GetValue(result));
 

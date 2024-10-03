@@ -2,7 +2,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
-    <ProjectReference Include="..\Common\SKHelpers.FunctionFilters.Common.csproj" />
+    <ProjectReference Include="..\Common\_.csproj" />
   </ItemGroup>
 
 </Project>

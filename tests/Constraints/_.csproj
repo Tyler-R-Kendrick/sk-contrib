@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../src/Constraints/*.csproj" />
+    <ProjectReference Include="../../src/Constraints/_.csproj" />
   </ItemGroup>
 
   <ItemGroup>
