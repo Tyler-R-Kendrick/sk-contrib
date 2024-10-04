@@ -28,14 +28,18 @@ public static class KernelExtensions
         PromptExecutionSettings? executionSettings = null,
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
-        await foreach(var message in InvokeChatAsync(kernel, async (content, token) =>
-        {
-            return await handler(content, token);
-        }, chatHistory, chatService, executionSettings, cancellationToken))
+        await foreach(var message in InvokeChatAsync(
+            kernel, handler.ToEnumerable(),
+            chatHistory, chatService, executionSettings,
+            cancellationToken))
         {
             yield return message;
         }
     }
+
+    private static Func<ChatMessageContent, CancellationTokenSource, Task<IEnumerable<ChatMessageContent>>> ToEnumerable(
+        this Func<ChatMessageContent, CancellationTokenSource, Task<ChatMessageContent>> func)
+        => async (content, token) => [await func(content, token)];
 
 
     /// <summary>
@@ -77,14 +81,14 @@ public static class KernelExtensions
     {
         chatHistory ??= [];
         chatService ??= kernel.Services.GetRequiredService<IChatCompletionService>();
-        var localHandler = handler ?? ((content, token) => Task.FromResult(Enumerable.Empty<ChatMessageContent>()));
+        var localHandler = handler ?? ((_, _) => Task.FromResult(Enumerable.Empty<ChatMessageContent>()));
         var cancellationTokenSource = new CancellationTokenSource();
-        async Task<IEnumerable<ChatMessageContent>> DefaultHandler(ChatMessageContent content, CancellationToken token)
+        async Task<IEnumerable<ChatMessageContent>> LocalHandler(ChatMessageContent content, CancellationToken token)
         {
-            await localHandler(content, cancellationTokenSource);
             chatHistory.Add(content);
-            var enumerable = Enumerable.Empty<ChatMessageContent>();
-            return enumerable;
+            var results = await localHandler(content, cancellationTokenSource);
+            chatHistory.AddRange(results);
+            return [..results, content];
         }
         var token = cancellationTokenSource.Token;
         while (!token.IsCancellationRequested)
@@ -94,10 +98,34 @@ public static class KernelExtensions
                 chatHistory, executionSettings, kernel, token);
             yield return content;
 
-            foreach (var response in await DefaultHandler(content, token))
+            foreach (var response in await LocalHandler(content, token))
             {
                 yield return response;
             }
         }
+    }
+
+    public static Task<IReadOnlyList<ChatMessageContent>> InvokeChatCompletionsAsync(this Kernel kernel,
+        ChatHistory? chatHistory = null,
+        IChatCompletionService? chatService = null,
+        PromptExecutionSettings? executionSettings = null,
+        CancellationToken cancellationToken = default)
+    {
+        chatHistory ??= [];
+        chatService ??= kernel.Services.GetRequiredService<IChatCompletionService>();
+        return chatService.GetChatMessageContentsAsync(
+            chatHistory, executionSettings, kernel, cancellationToken);
+    }
+
+    public static Task<ChatMessageContent> InvokeChatCompletionAsync(this Kernel kernel,
+        ChatHistory? chatHistory = null,
+        IChatCompletionService? chatService = null,
+        PromptExecutionSettings? executionSettings = null,
+        CancellationToken cancellationToken = default)
+    {
+        chatHistory ??= [];
+        chatService ??= kernel.Services.GetRequiredService<IChatCompletionService>();
+        return chatService.GetChatMessageContentAsync(
+            chatHistory, executionSettings, kernel, cancellationToken);
     }
 }
