@@ -1,20 +1,18 @@
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 
 namespace Microsoft.SemanticKernel.ChatCompletion.Tests;
 
-[TestClass]
 public class ChatCompletionTests
 {
-    [TestMethod]
+    [Test]
     public async Task InvokeChatAsyncSucceeds()
     {
+        // Arrange
         const string
             systemPrompt = "You are a helpful AI assistant.",
             agentResponse = "Hello! How can I help you today?",
             exitMessage = "exit";
-            
+        string[] expectations = [agentResponse, exitMessage];
         ChatHistory history = [new(AuthorRole.System, systemPrompt)];
 
         var kernelBuilder = Kernel.CreateBuilder();
@@ -29,6 +27,7 @@ public class ChatCompletionTests
             It.IsAny<CancellationToken>()))
             .ReturnsAsync([new(AuthorRole.Assistant, agentResponse)]);
         
+        // Act
         using StringReader reader = new(exitMessage);
         async IAsyncEnumerable<ChatMessageContent> HandleChat(
             ChatMessageContent content,
@@ -41,14 +40,13 @@ public class ChatCompletionTests
         }
 
         var chat = kernel.InvokeChatAsync(HandleChat, history);
-        List<ChatMessageContent> responses = [];
-        await foreach (var message in chat)
-        {
-            responses.Add(message);
-        }
 
-        Assert.AreEqual(2, responses.Count);
-        Assert.AreEqual(agentResponse, responses[0].Content);
-        Assert.AreEqual(exitMessage, responses[1].Content);
+        // Assert
+        List<string?> responses = [];
+        await foreach (var message in chat.Select(x => x.Content))
+            responses.Add(message);
+
+        Assert.That(responses, Has.Count.EqualTo(2));
+        Assert.That(responses, Is.EquivalentTo(expectations));
     }
 }

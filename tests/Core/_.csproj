@@ -1,24 +1,7 @@
 <Project Sdk="MSTest.Sdk/3.3.1">
 
-<PropertyGroup>
-    <IsPackable>false</IsPackable>
-    <IsTestProject>true</IsTestProject>
-
-    <OutputType>Exe</OutputType>
-    <EnableMSTestRunner>true</EnableMSTestRunner>
-
-    <!-- Add this to your project file. -->
-    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
-    <TestingPlatformShowTestsFailure>true</TestingPlatformShowTestsFailure>
-    <TestingPlatformCaptureOutput>false</TestingPlatformCaptureOutput>  
-</PropertyGroup>
-
-<ItemGroup>
-    <ProjectReference Include="..\..\src\Core\_.csproj" />
-</ItemGroup>
-
-<ItemGroup>
-  <PackageReference Include="Moq" />
-</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(src)\Core\_.csproj" />
+  </ItemGroup>
 
 </Project>

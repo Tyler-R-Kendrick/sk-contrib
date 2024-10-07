@@ -33,9 +33,7 @@ public static class KernelExtensions
             kernel, handler.ToAsyncEnumerable(),
             chatHistory, chatService, executionSettings,
             cancellationToken))
-        {
             yield return message;
-        }
     }
 
     private static Func<ChatMessageContent, CancellationTokenSource, Task<IEnumerable<ChatMessageContent>>> ToEnumerable(
@@ -113,9 +111,7 @@ public static class KernelExtensions
             yield return content;
 
             await foreach (var response in LocalHandler(content, token))
-            {
                 yield return response;
-            }
         }
     }
 
