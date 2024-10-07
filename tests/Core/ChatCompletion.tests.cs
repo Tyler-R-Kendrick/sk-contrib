@@ -30,16 +30,17 @@ public class ChatCompletionTests
             .ReturnsAsync([new(AuthorRole.Assistant, agentResponse)]);
         
         using StringReader reader = new(exitMessage);
-
-        async IAsyncEnumerable<ChatMessageContent> HandleChat(ChatMessageContent content, CancellationTokenSource tokenSource)
+        async IAsyncEnumerable<ChatMessageContent> HandleChat(
+            ChatMessageContent content,
+            CancellationTokenSource tokenSource)
         {
             var token = tokenSource.Token;
             var userMessage = await reader.ReadLineAsync(token);
             if (userMessage == exitMessage) await tokenSource.CancelAsync();
             yield return new(AuthorRole.User, userMessage);
         }
-        var chat = kernel.InvokeChatAsync(HandleChat, history);
 
+        var chat = kernel.InvokeChatAsync(HandleChat, history);
         List<ChatMessageContent> responses = [];
         await foreach (var message in chat)
         {
